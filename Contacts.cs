@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AddressBook
 {
@@ -25,12 +26,44 @@ namespace AddressBook
             this.phnNo = phnNo;
             
         }
-
+        
 
 
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book Management");
+            Console.WriteLine("Enter Contact Details");
+            Console.WriteLine("Enter First Name");
+            string frstName = Console.ReadLine();
+
+            Console.WriteLine("Enter last Name");
+            string lastName = Console.ReadLine();
+
+            Console.WriteLine("Enter Address ");
+            string address = Console.ReadLine();
+
+            Console.WriteLine("Enter city Name");
+            string city = Console.ReadLine();
+
+            Console.WriteLine("Enter state Name");
+            string state = Console.ReadLine();
+
+            Console.WriteLine("Enter email id");
+            string email = Console.ReadLine();
+
+            Console.WriteLine("Enter Zip code");
+            string zip = Console.ReadLine();
+
+            Console.WriteLine("Enter Phone Number");
+            string phnNo = Console.ReadLine();
+
+            Contacts contacts = new Contacts(frstName,lastName,address,city,state,email,zip,phnNo);
+
+            List<Contacts> l = new List<Contacts>();
+            l.Add(contacts);
+
+          
+
         }
     }
 }
