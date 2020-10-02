@@ -117,12 +117,20 @@ namespace AddressBook
 
         }
 
+        public void deleteContact(string name)
+        {
+            Contacts contacts = new Contacts();
+            if (contacts.frstName == name)
+                l.Remove(contacts);
+
+        }
+
         static void Main(string[] args)
         {
             Contacts c = new Contacts();
             Console.WriteLine("Welcome to Address Book Management");
             Console.WriteLine("Enter the choice");
-            Console.WriteLine("1: Enter contact details   2: edit contact details ");
+            Console.WriteLine("1: Enter contact details   2: edit contact details  3.Delete a contact");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -135,6 +143,12 @@ namespace AddressBook
                     string name = Console.ReadLine();
                     c.editDetails(name);
                     break;
+
+                case 3:
+                    Console.WriteLine("enter the frstname to delete contact details ");
+                    string named = Console.ReadLine();
+                    break;
+
 
                 default:
                     Console.WriteLine("Invalid option");
