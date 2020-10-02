@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 namespace AddressBook
 {
-    class Contacts
+
+    
+    public class Contacts:Address
     {
          public string frstName;
         public string lastName;
@@ -13,7 +15,7 @@ namespace AddressBook
         public string email;
         public string zip;
         public string phnNo;
-        List<Contacts> l = new List<Contacts>();
+      public  List<Contacts> l = new List<Contacts>();
 
         public Contacts()
         {
@@ -128,49 +130,7 @@ namespace AddressBook
 
         }
 
-        static void Main(string[] args)
-        {
-            Contacts c = new Contacts();
-            Console.WriteLine("Welcome to Address Book Management");
-            Console.WriteLine("Enter the choice");
-            string process;
-            do
-            {
-                Console.WriteLine("1: Enter contact details   2: edit contact details  3.Delete a contact");
-                int choice = Convert.ToInt32(Console.ReadLine());
-                switch (choice)
-                {
-                    case 1:
-                        c.enterDetails();
-                        break;
-
-                    case 2:
-                        Console.WriteLine("enter the frstname to edit contact details ");
-                        string name = Console.ReadLine();
-                        c.editDetails(name);
-                        break;
-
-                    case 3:
-                        Console.WriteLine("enter the frstname to delete contact details ");
-                        string named = Console.ReadLine();
-                        break;
-
-
-                    default:
-                        Console.WriteLine("Invalid option");
-                        break;
-                }
-
-                Console.WriteLine("Do you want to continue  yes or No ");
-                 process = Console.ReadLine();
-
-
-            }
-
-            while (process == "yes");
-
-
-            }
+        
 
         }
     }
