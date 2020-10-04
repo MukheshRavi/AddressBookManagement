@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AddressBook
+namespace AddressBookMain
 {
-    class Contacts
+
+    
+    public class Contacts:Address
     {
          public string frstName;
         public string lastName;
@@ -13,7 +15,7 @@ namespace AddressBook
         public string email;
         public string zip;
         public string phnNo;
-        List<Contacts> l = new List<Contacts>();
+      public  List<Contacts> l = new List<Contacts>();
 
         public Contacts()
         {
@@ -32,55 +34,58 @@ namespace AddressBook
             this.phnNo = phnNo;
             
         }
-        
+
 
         public void editDetails(string name)
-        { Contacts contacts = new Contacts();
-           contacts = l[1];
-            if (contacts.frstName == name)
+        {
+            Contacts contacts = new Contacts();
+            for (int i = 0; i < l.Count; i++)
             {
-                Console.WriteLine("enter the number of details you want to edit");
-
-                Console.WriteLine(" 1:frstName  2:lastName  3:address  4:city  5:state  6:email 7:zip  8:PhoneNumber ");
-                int num = Convert.ToInt32(Console.ReadLine()); //user enters the which detail should be updated
-                Console.WriteLine("enter the new detail");
-                string detail = Console.ReadLine();  //user enters the new detail
-
-                switch (num)
+                contacts = l[i];
+                if (contacts.frstName == name)
                 {
-                    case 1:
-                        contacts.frstName = detail;
-                        break;
+                    Console.WriteLine("enter the number of details you want to edit");
 
-                    case 2:
-                        contacts.lastName = detail;
-                        break;
-                    case 3:
-                        contacts.address = detail;
-                        break;
-                    case 4:
-                        contacts.city = detail;
-                        break;
-                    case 5:
-                        contacts.state = detail;
-                        break;
-                    case 6:
-                        contacts.email = detail;
-                        break;
-                    case 7:
-                        contacts.zip = detail;
-                        break;
-                    case 8:
-                        contacts.phnNo = detail;
-                        break;
+                    Console.WriteLine(" 1:frstName  2:lastName  3:address  4:city  5:state  6:email 7:zip  8:PhoneNumber ");
+                    int num = Convert.ToInt32(Console.ReadLine()); //user enters the which detail should be updated
+                    Console.WriteLine("enter the new detail");
+                    string detail = Console.ReadLine();  //user enters the new detail
+
+                    switch (num)
+                    {
+                        case 1:
+                            contacts.frstName = detail;
+                            break;
+
+                        case 2:
+                            contacts.lastName = detail;
+                            break;
+                        case 3:
+                            contacts.address = detail;
+                            break;
+                        case 4:
+                            contacts.city = detail;
+                            break;
+                        case 5:
+                            contacts.state = detail;
+                            break;
+                        case 6:
+                            contacts.email = detail;
+                            break;
+                        case 7:
+                            contacts.zip = detail;
+                            break;
+                        case 8:
+                            contacts.phnNo = detail;
+                            break;
+                    }
+
+
                 }
 
 
-            }
-            else
-                Console.WriteLine("there is no such user with entered first name");
 
-            
+            }
         }
 
         public void enterDetails()
@@ -128,49 +133,7 @@ namespace AddressBook
 
         }
 
-        static void Main(string[] args)
-        {
-            Contacts c = new Contacts();
-            Console.WriteLine("Welcome to Address Book Management");
-            Console.WriteLine("Enter the choice");
-            string process;
-            do
-            {
-                Console.WriteLine("1: Enter contact details   2: edit contact details  3.Delete a contact");
-                int choice = Convert.ToInt32(Console.ReadLine());
-                switch (choice)
-                {
-                    case 1:
-                        c.enterDetails();
-                        break;
-
-                    case 2:
-                        Console.WriteLine("enter the frstname to edit contact details ");
-                        string name = Console.ReadLine();
-                        c.editDetails(name);
-                        break;
-
-                    case 3:
-                        Console.WriteLine("enter the frstname to delete contact details ");
-                        string named = Console.ReadLine();
-                        break;
-
-
-                    default:
-                        Console.WriteLine("Invalid option");
-                        break;
-                }
-
-                Console.WriteLine("Do you want to continue  yes or No ");
-                 process = Console.ReadLine();
-
-
-            }
-
-            while (process == "yes");
-
-
-            }
+        
 
         }
     }
