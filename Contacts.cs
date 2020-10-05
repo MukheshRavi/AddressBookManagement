@@ -4,10 +4,10 @@ using System.Collections.Generic;
 namespace AddressBookMain
 {
 
-    
-    public class Contacts:Address
+
+    public class Contacts : Address
     {
-         public string frstName;
+        public string frstName;
         public string lastName;
         public string address;
         public string city;
@@ -15,14 +15,16 @@ namespace AddressBookMain
         public string email;
         public string zip;
         public string phnNo;
-      public  List<Contacts> l = new List<Contacts>();
+        public List<Contacts> l = new List<Contacts>();
+        public Dictionary<string, Contacts> addressBook = new Dictionary<string, Contacts>();
+        //Contacts contacts = new Contacts();
 
         public Contacts()
         {
 
         }
 
-        public Contacts(string frstName, string lastName, string address, string city, string state, string email,string zip,string phnNo)
+        public Contacts(string frstName, string lastName, string address, string city, string state, string email, string zip, string phnNo)
         {
             this.frstName = frstName;
             this.lastName = lastName;
@@ -32,13 +34,13 @@ namespace AddressBookMain
             this.email = email;
             this.zip = zip;
             this.phnNo = phnNo;
-            
+
         }
 
 
         public void editDetails(string name)
         {
-            Contacts contacts = new Contacts();
+           Contacts contacts = new Contacts();
             for (int i = 0; i < l.Count; i++)
             {
                 contacts = l[i];
@@ -90,6 +92,9 @@ namespace AddressBookMain
 
         public void enterDetails()
         {
+            Console.WriteLine("Enter the name of address book");
+            string name = Console.ReadLine();
+
             Console.WriteLine("Enter Contact Details");
             Console.WriteLine("Enter First Name");
             string frstName = Console.ReadLine();
@@ -118,23 +123,47 @@ namespace AddressBookMain
             Contacts contacts = new Contacts(frstName, lastName, address, city, state, email, zip, phnNo);
 
 
-            new Contacts().l.Add(contacts);
+           l.Add(contacts);
             Console.WriteLine("New contact added");
             Console.WriteLine("Firstname:" + contacts.frstName + "\nLastname:" + contacts.lastName + "\naddress:" + contacts.address +
                 "\ncity:" + contacts.city + "\nstate:" + contacts.state + "\nzip" + contacts.zip + "\nPhone Number:" + contacts.phnNo);
+            addressBook.Add(name, contacts);
+           
 
         }
 
-        public void deleteContact(string name)
-        {
-            Contacts contacts = new Contacts();
-            if (contacts.frstName == name)
-                l.Remove(contacts);
 
+        public void displayAddressBook()
+        {  if (addressBook.Count == 0)
+                    Console.WriteLine("There is no contact added to display");
+
+            else {
+                foreach (KeyValuePair<string, Contacts> a in addressBook)
+                {
+                    Console.WriteLine("Name of AddressBook: firstname, lastname, address, city, state, email, zip, phoneNumber");
+                    Console.WriteLine(a.Key + ":" + a.Value.frstName + "," + a.Value.lastName + "," + a.Value.address + "," + a.Value.city + ","
+                        + a.Value.state + "," + a.Value.email + "," + a.Value.zip + "," + a.Value.phnNo);
+
+                }
+            }
+        }
+
+
+        public void deleteContact(string named)
+        {
+           Contacts c = new Contacts();
+            for (int i = 0; i < l.Count; i++)
+            { c = l[i];
+                if (c.frstName == named)
+                { l.Remove(c);
+                   
+                    }
+            }
         }
 
         
 
-        }
+        
     }
+}
 

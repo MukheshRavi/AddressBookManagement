@@ -6,11 +6,11 @@ namespace AddressBookMain
 {
     class AddressBook
     {
-        public string name;
+        //public string name;
         public Dictionary<string, Contacts> addressBook;
 
 
-        public void displayAddressBook(Dictionary<string,Contacts> d)
+        /*public void displayAddressBook(Dictionary<string,Contacts> d)
         {
             foreach(KeyValuePair<string,Contacts> a in d)
             {
@@ -19,6 +19,6 @@ namespace AddressBookMain
                     + a.Value.state + "," + a.Value.email + "," + a.Value.zip + "," + a.Value.phnNo );
 
             }
-        }
+        }*/
     }
 }

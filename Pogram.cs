@@ -9,15 +9,14 @@ namespace AddressBookMain
         static void Main(string[] args)
         {
             Contacts c = new Contacts();
-            Dictionary<string, Contacts> addressBook = new Dictionary<string, Contacts>();
+          //  Dictionary<string, Contacts> addressBook = new Dictionary<string, Contacts>();
 
             Console.WriteLine("Welcome to Address Book Management");
             Console.WriteLine("Enter the choice");
             string process;
             do
             {
-                Console.WriteLine("Enter the name of address book");
-                string name =Console.ReadLine();
+              
 
                 
                 Console.WriteLine("1: Enter contact details   2: edit contact details  3.Delete a contact 4.Display Contanct");
@@ -27,13 +26,13 @@ namespace AddressBookMain
                     case 1:                                //To enter contact details
                         c.enterDetails();
                     
-                        addressBook.Add(name, c);
+                      
                         break;
 
                     case 2:                                    //To update a contact based on First name 
                         Console.WriteLine("enter the frstname to edit contact details ");
-                        string frstname = Console.ReadLine();
-                        c.editDetails(frstname);
+                        string name = Console.ReadLine();
+                        c.editDetails(name);
                         break;
 
                     case 3:                                 //To delete a contact
@@ -43,9 +42,8 @@ namespace AddressBookMain
                         break;
 
                     case 4:                                    //To display a contact
-                        if (addressBook.Count == 0)
-                            Console.WriteLine("There is no contact added to display");
-                        new AddressBook().displayAddressBook(addressBook);
+                       
+                        c.displayAddressBook();
                         break;
 
                     default:
